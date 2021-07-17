@@ -2,7 +2,11 @@ import React from "react";
 import VideoDescription from "./VideoDescription";
 
 const VideoFrame = ({ video }) => {
-  if (!video) return "loading";
+  if (!video) return (
+    <div>
+      <h1 className="text-4xl text-white py-8">Search video from the search box</h1>
+    </div>
+  )
   console.log(video);
 
   let videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;

@@ -40,14 +40,16 @@ const Utube = ({ searchTerm }) => {
   const onSelectHandler = (video) => {
     setSelected(video);
   };
-
+  const firstSelected = (video) => {
+    setSelected(video)
+  }
   return (
     <div className="grid grid-cols-7 gap-4 bg-gray-800">
       <div className="col-start-1 col-end-6 bg-gray-800  m-4">
         <VideoFrame video={selected} />
       </div>
       <div className="col-start-6 col-end-8">
-        <VideoList videos={videos} onSelectHandler={onSelectHandler} />
+        <VideoList firstSelected={firstSelected} videos={videos} onSelectHandler={onSelectHandler} />
       </div>
     </div>
   );
