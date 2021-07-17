@@ -7,6 +7,7 @@ import Home from "./components/Home/Home";
 import Wiki from "./components/WIki/Wiki";
 import Unsplash from "./components/Unsplash/Unsplash";
 import Translator from "./components/Translator/Translator";
+import Utube from "./components/Utube/Utube";
 
 
 function App() {
@@ -21,8 +22,8 @@ function App() {
       <div className="relative">
         <Navbar searchTermHandler={searchTermHandler}/>
         <div className="ml-40 bg-gray-200 w-screen h-screen absolute w-3/4 top-0 pt-20 pl-8 pr-60">
-          {/* <Wiki searchTerm={searchTerm}/> */}
-           <Translator />
+       {/* <Unsplash searchTerm={searchTerm}/> */}
+        <Utube searchTerm={searchTerm}/>
         </div>
 
       </div>
