@@ -5,7 +5,8 @@ import Navbar from "./components/Navbar";
 import NavTitle from "./components/NavTitle";
 import Home from "./components/Home/Home";
 import Wiki from "./components/WIki/Wiki";
-import Unsplash from "./components/Unsplash/Unsplash"
+import Unsplash from "./components/Unsplash/Unsplash";
+import Translator from "./components/Translator/Translator";
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
         <Navbar searchTermHandler={searchTermHandler}/>
         <div className="ml-40 bg-gray-200 w-screen h-screen absolute w-3/4 top-0 pt-20 pl-8 pr-60">
           {/* <Wiki searchTerm={searchTerm}/> */}
-           <Unsplash searchTerm={searchTerm} />
+           <Translator />
         </div>
 
       </div>
