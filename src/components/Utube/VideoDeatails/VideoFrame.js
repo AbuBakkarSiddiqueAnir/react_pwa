@@ -13,7 +13,7 @@ const VideoFrame = ({ video }) => {
   return (
     <div className=" ui">
       <div className="embed ui">
-        <iframe allowfullscreen frameborder="0" src={videoSrc} />
+        <iframe allowfullscreen  src={videoSrc} />
       </div>
       <div className="ui header">
         <VideoDescription video={video} />

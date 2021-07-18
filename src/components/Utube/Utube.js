@@ -18,7 +18,7 @@ const Utube = ({ searchTerm }) => {
 
         setVideos(data.items);
       } catch (e) {
-        console.log(e);
+       return console.log(e);
       }
     };
 
