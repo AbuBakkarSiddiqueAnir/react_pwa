@@ -19,7 +19,7 @@ const ImageCard = ({ src, alt }) => {
 
   return (
     <div className="shadow-2xl" style={{ display: "grid", gridRowEnd: `span ${spans.spans}` }}>
-      <img ref={imageRef} alt={alt} src={src} />
+      <img loading="lazy" ref={imageRef} alt={alt} src={src} />
     </div>
   );
 };

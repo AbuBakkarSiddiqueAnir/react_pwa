@@ -20,6 +20,7 @@ const VideoItem = ({ video, selected, onSelectHandler }) => {
       <span className="relative">
         <span className="absolute z-50 top-36 left-1">{playIcon}</span>
         <img
+          loading="lazy"
           className="mt-8 p-0"
           src={video.snippet.thumbnails.medium.url}
           width={video.snippet.thumbnails.medium.width}

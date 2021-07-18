@@ -19,7 +19,6 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [show, setShow] = useState(false);
   const [path, setPath] = useState("/");
-  let location = useLocation();
 
   const showHandler = (term) => {
     setShow(term);
@@ -29,14 +28,12 @@ function App() {
     setSearchTerm(inputValue);
   };
 
-  useEffect(() => {
-    setPath(location.pathname);
-    console.log(location.pathname)
-  }, []);
+  const searchTermReset = (path) => {
+    setPath(path);
+  };
 
   useEffect(() => {
     setSearchTerm("");
-    console.log(path)
   }, [path]);
 
   return (
@@ -53,13 +50,19 @@ function App() {
               <Home />
             </Route>
             <Route path="/wikipedia" exact>
-              <Wiki searchTerm={searchTerm} />
+              <Wiki searchTermReset={searchTermReset} searchTerm={searchTerm} />
             </Route>
             <Route path="/image" exact>
-              <Unsplash searchTerm={searchTerm} />
+              <Unsplash
+                searchTermReset={searchTermReset}
+                searchTerm={searchTerm}
+              />
             </Route>
             <Route path="/utube" exact>
-              <Utube searchTerm={searchTerm} />
+              <Utube
+                searchTermReset={searchTermReset}
+                searchTerm={searchTerm}
+              />
             </Route>
             <Route path="/translator" exact>
               <Translator />

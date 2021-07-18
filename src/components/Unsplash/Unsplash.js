@@ -1,9 +1,20 @@
 import React, { useState, useEffect } from "react";
+import {
+  useLocation,
+} from "react-router-dom";
 import UnsplashApi from "./Api/UnsplashApi";
 import ImageList from "./ImageList";
 
-const Unsplash = ({ searchTerm }) => {
+
+const Unsplash = ({ searchTerm,searchTermReset }) => {
   const [images, setImages] = useState([]);
+
+  const route = useLocation()
+  
+  useEffect(() => {
+    searchTermReset(route.pathname)
+  },[])
+
   useEffect(() => {
     const onSearchSubmit = async () => {
       try {
@@ -11,24 +22,26 @@ const Unsplash = ({ searchTerm }) => {
           params: { query: searchTerm },
         });
         setImages(unsplashData.data.results);
-        console.log(unsplashData.data.results);
       } catch (e) {
         console.log(e);
       }
     };
 
     if (searchTerm && !images.length) {
-      onSearchSubmit();
-    } else {
-      var timeoutId = setTimeout(() => {
-        if (searchTerm) {
-          onSearchSubmit();
-        }
-      }, 500);
+      var timeoutIdFirstTime = setTimeout(() => {
+        onSearchSubmit();
+      },300)
+      
+    } else if (searchTerm) {
+      
+      var timeoutIdOtherTimes = setTimeout(() => {
+        onSearchSubmit();
+      }, 300);
     }
 
     return () => {
-      clearTimeout(timeoutId);
+      if(timeoutIdFirstTime) clearTimeout(timeoutIdFirstTime)
+       if(timeoutIdOtherTimes) clearTimeout(timeoutIdOtherTimes);
     };
   }, [searchTerm]);
 

@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
+import {
+  useLocation,
+} from "react-router-dom";
 import WikiApi from "./Api/WikiApi";
 
-const Wiki = ({ searchTerm }) => {
+const Wiki = ({ searchTerm,searchTermReset }) => {
   const [apiData, setApiData] = useState([]);
+
+  const route = useLocation()
+  
+  useEffect(() => {
+    searchTermReset(route.pathname)
+  },[])
 
   useEffect(() => {
     const ApiSearchData = async () => {
@@ -11,17 +20,20 @@ const Wiki = ({ searchTerm }) => {
     };
 
     if (searchTerm && !apiData.length) {
-      ApiSearchData();
-    } else {
-      var timeoutId = setTimeout(() => {
-        if (searchTerm) {
-          ApiSearchData();
-        }
-      }, 500);
+      var timeoutIdFirstTime = setTimeout(() => {
+        ApiSearchData();
+      },400)
+      
+    } else if (searchTerm) {
+      
+      var timeoutIdOtherTimes = setTimeout(() => {
+        ApiSearchData();
+      }, 400);
     }
 
     return () => {
-      clearTimeout(timeoutId);
+      if(timeoutIdFirstTime) clearTimeout(timeoutIdFirstTime)
+       if(timeoutIdOtherTimes) clearTimeout(timeoutIdOtherTimes);
     };
   }, [searchTerm]);
 
