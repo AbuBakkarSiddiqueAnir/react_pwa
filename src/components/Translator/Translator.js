@@ -98,7 +98,7 @@ const Translator = () => {
   const [text, setText] = useState("");
 
   return (
-    <div className="w-3/4 mx-auto h-80 mt-16 bg-green-700 text-white">
+    <div className="w-4/5 mx-auto h-auto py-12 mt-16 bg-gray-800 text-white">
       <div className="w-100 ">
         <input
           type="text"

@@ -23,33 +23,44 @@ const Utube = ({ searchTerm }) => {
     };
 
     if (searchTerm && !videos.length) {
-      onSearchSubmit();
-    } else {
-      var timeoutId = setTimeout(() => {
-        if (searchTerm) {
-          onSearchSubmit();
-        }
+      var timeoutIdFirstTime = setTimeout(() => {
+        console.log("first search")
+        onSearchSubmit();
+      },500)
+      
+    } else if (searchTerm) {
+      
+      var timeoutIdOtherTimes = setTimeout(() => {
+        console.log("other thatn first search")
+        onSearchSubmit();
       }, 500);
     }
 
     return () => {
-      clearTimeout(timeoutId);
+      if(timeoutIdFirstTime) clearTimeout(timeoutIdFirstTime)
+       if(timeoutIdOtherTimes) clearTimeout(timeoutIdOtherTimes);
     };
   }, [searchTerm]);
 
   const onSelectHandler = (video) => {
     setSelected(video);
   };
+
   const firstSelected = (video) => {
-    setSelected(video)
-  }
+    setSelected(video);
+  };
   return (
     <div className="grid grid-cols-7 gap-4 bg-gray-800">
       <div className="col-start-1 col-end-6 bg-gray-800  m-4">
         <VideoFrame video={selected} />
       </div>
       <div className="col-start-6 col-end-8">
-        <VideoList firstSelected={firstSelected} videos={videos} onSelectHandler={onSelectHandler} />
+        <VideoList
+          firstSelected={firstSelected}
+          videos={videos}
+          selected={selected}
+          onSelectHandler={onSelectHandler}
+        />
       </div>
     </div>
   );

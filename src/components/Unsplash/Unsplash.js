@@ -33,7 +33,7 @@ const Unsplash = ({ searchTerm }) => {
   }, [searchTerm]);
 
   return (
-    <div className="ui container" style={{ marginTop: "10px" }}>
+    <div className="ui container bg-gray-800 p-4" style={{ marginTop: "10px" }}>
       <ImageList images={images} />
     </div>
   );

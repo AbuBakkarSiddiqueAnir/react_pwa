@@ -7,13 +7,13 @@ const VideoFrame = ({ video }) => {
       <h1 className="text-4xl text-white py-8">Search video from the search box</h1>
     </div>
   )
-  console.log(video);
 
   let videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
+
   return (
     <div className=" ui">
       <div className="embed ui">
-        <iframe src={videoSrc} />
+        <iframe allowfullscreen frameborder="0" src={videoSrc} />
       </div>
       <div className="ui header">
         <VideoDescription video={video} />

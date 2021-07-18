@@ -1,16 +1,15 @@
 import React,{useEffect} from 'react';
 import VideoItem from './VideoItem'
 
-const VideoList = ({videos, onSelectHandler, firstSelected}) => {
+const VideoList = ({videos, selected, onSelectHandler, firstSelected}) => {
     
     useEffect(() => {
-        firstSelected(videos[4])
-    },[])
+        firstSelected(videos[0])
+    },[videos])
     
     const videoList = videos.map((video) => {
-        return <VideoItem onSelectHandler={onSelectHandler} video={video}/>
+        return <VideoItem key={video.id.videoId} selected={selected} onSelectHandler={onSelectHandler} video={video}/>
     } )
-
 
     return (
         <div>
