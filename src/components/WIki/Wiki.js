@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
-import {
-  useLocation,
-} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import WikiApi from "./Api/WikiApi";
 
-const Wiki = ({ searchTerm,searchTermReset }) => {
+const Wiki = ({ searchTerm, searchTermReset }) => {
   const [apiData, setApiData] = useState([]);
 
-  const route = useLocation()
-  
+  const route = useLocation();
+
   useEffect(() => {
-    searchTermReset(route.pathname)
-  },[])
+    searchTermReset(route.pathname);
+  }, []);
 
   useEffect(() => {
     const ApiSearchData = async () => {
@@ -22,20 +20,26 @@ const Wiki = ({ searchTerm,searchTermReset }) => {
     if (searchTerm && !apiData.length) {
       var timeoutIdFirstTime = setTimeout(() => {
         ApiSearchData();
-      },400)
-      
+      }, 400);
     } else if (searchTerm) {
-      
       var timeoutIdOtherTimes = setTimeout(() => {
         ApiSearchData();
       }, 400);
     }
 
     return () => {
-      if(timeoutIdFirstTime) clearTimeout(timeoutIdFirstTime)
-       if(timeoutIdOtherTimes) clearTimeout(timeoutIdOtherTimes);
+      if (timeoutIdFirstTime) clearTimeout(timeoutIdFirstTime);
+      if (timeoutIdOtherTimes) clearTimeout(timeoutIdOtherTimes);
     };
   }, [searchTerm]);
+
+  const emptyPage = (
+    <div className="text-8xl ml-80 mt-12">
+      {" "}
+      <br />
+      <i class="wikipedia w icon "> </i> <span>Wikipedia</span>
+    </div>
+  );
 
   const renderedData = apiData.map((data) => {
     return (
@@ -50,17 +54,22 @@ const Wiki = ({ searchTerm,searchTermReset }) => {
           </a>
         </h1>
 
-        <span className="text-xl" dangerouslySetInnerHTML={{ __html: data.snippet }}></span>
+        <span
+          className="text-xl"
+          dangerouslySetInnerHTML={{ __html: data.snippet }}
+        ></span>
       </div>
     );
   });
 
-  return (
+  return apiData.length !== 0 ? (
     <div className="">
       <div className="grid  items-center justify-center bg-gray-200 h-16 m-8">
         <div>{renderedData}</div>
       </div>
     </div>
+  ) : (
+    emptyPage
   );
 };
 
