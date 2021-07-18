@@ -27,24 +27,25 @@ const Wiki = ({ searchTerm }) => {
 
   const renderedData = apiData.map((data) => {
     return (
-      <div className="w-100 h-auto bg-green-600 text-white p-4 border-b-8">
+      <div className="w-100 shadow-2xl h-auto bg-green-600 text-white p-4 border-b-8">
         <h1 className="font-bold">
           <a
             href={`https://en.wikipedia.org?curid=${data.pageid}`}
             target="_blank"
+            className="text-2xl"
           >
             {data.title}
           </a>
         </h1>
 
-        <span dangerouslySetInnerHTML={{ __html: data.snippet }}></span>
+        <span className="text-xl" dangerouslySetInnerHTML={{ __html: data.snippet }}></span>
       </div>
     );
   });
 
   return (
-    <div>
-      <div className="grid items-center justify-center bg-gray-200 h-16 m-8">
+    <div className="">
+      <div className="grid  items-center justify-center bg-gray-200 h-16 m-8">
         <div>{renderedData}</div>
       </div>
     </div>

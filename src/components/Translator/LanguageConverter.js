@@ -7,6 +7,7 @@ const LanguageConverter = ({ language, text, children }) => {
   const doTranslate = async () => {
     if (text !== "") {
       const { data } = await TranslatorApi(language, text);
+      console.log(data)
       setTranslated(data.data.translations[0].translatedText);
     }
   };

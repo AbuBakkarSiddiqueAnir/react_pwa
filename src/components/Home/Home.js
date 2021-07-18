@@ -210,7 +210,8 @@ const Home = () => {
         <div ref={dino_ref}></div>
       </div>
       <Image src={dinosaur} /> */}
-
+      <span className="text-3xl">Home</span>
+ 
       {/* <img src={cactus} width="100" height="100"></img> */}
     </div>
   );

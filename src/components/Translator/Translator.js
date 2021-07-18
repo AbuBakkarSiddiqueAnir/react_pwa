@@ -115,7 +115,7 @@ const Translator = () => {
           onSelectedChange={setLanguage}
         />
       </div>
-
+  
       <div>
         <span>
           <LanguageConverter
