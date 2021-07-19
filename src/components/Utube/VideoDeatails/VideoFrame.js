@@ -1,5 +1,6 @@
 import React from "react";
 import VideoDescription from "./VideoDescription";
+import ReactPlayer from 'react-player'
 
 const VideoFrame = ({ video }) => {
   if (!video) return (
@@ -13,7 +14,7 @@ const VideoFrame = ({ video }) => {
   return (
     <div className=" ui">
       <div className="embed ui">
-        <iframe allowfullscreen loading="lazy"  src={videoSrc} />
+        <ReactPlayer playing="true" muted="true" volume="1" controls="true" allowfullscreen loading="lazy"  url={videoSrc} />
       </div>
       <div className="ui header">
         <VideoDescription video={video} />
