@@ -10,6 +10,8 @@ TESARAX
 
 --# I thought it will be a good idea to make a components application for sake of practicing #--
 --# Installation #--
+
+
         clone the project from repository at your local repository, then
         get into root folder structure and and at terminal, type "npm install";
         After the install completion, you are ready to go, type "npm start";
@@ -33,6 +35,10 @@ TESARAX
                             "web-vitals": "^1.0.1"
 
 --# challenges #--
+
+
         As a practicing project, it was fairly simple to complete the
+
+        
 
 .............. # Anyone can copy the code # ...................
