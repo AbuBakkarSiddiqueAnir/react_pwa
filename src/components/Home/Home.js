@@ -42,7 +42,7 @@ const Home = () => {
   const history_C_2 = history;
   const current = history_C_2[stepNumber];
   const winner = CalculateWinner(current.squares);
-  console.log(history);
+ 
   const moves = history.map((step, move) => {
     const desc = move ? `Fot to move # ${move}` : `Go to game start`;
     return (
@@ -58,17 +58,15 @@ const Home = () => {
 
   return (
     <div className="grid justify-center">
-      <span className="text-3xl">
-        <div className="game">
-          <div className="game-board">
-            <Board squares={current.squares} onClick={(i) => handleClick(i)} />
-          </div>
-          <div className="game-info">
-            <div>{status}</div>
-            <ol>{moves}</ol>
-          </div>
+      <div className="game mt-24">
+        <div className="game-board">
+          <Board squares={current.squares} onClick={(i) => handleClick(i)} />
         </div>
-      </span>
+        <div className="game-info ml-24 text-3xl">
+          <div>{status}</div>
+          <ol>{moves}</ol>
+        </div>
+      </div>
     </div>
   );
 };
