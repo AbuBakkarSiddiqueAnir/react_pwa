@@ -15,6 +15,9 @@ TESARAX
         After the install completion, you are ready to go, type "npm start";
 
 --# Technologies #--
+
+
+
         React js    : "create react app" was the react pakage to install react
         npm pakages :       "@craco/craco": "^6.2.0",
                             "@testing-library/jest-dom": "^5.11.4",
