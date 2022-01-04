@@ -1,0 +1,15 @@
+{
+  "short_name": "Components App",
+  "name": "Components App PWA",
+  "icons": [
+    {
+      "src": "/images/react.png",
+      "sizes": "1024×1024",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
